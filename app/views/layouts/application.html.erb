@@ -7,7 +7,7 @@
 
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
-    <%= display_meta_tags site: "Rauversion" %>
+    <%= display_meta_tags site: "quota.life" %>
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -26,7 +26,7 @@
 
   </head>
 
-  <body class="bg-default font-sans antialiased text-default dark"
+  <body class="bg-default font-sans antialiased text-default"
      data-controller="track-detector dark-mode">
     
     <% if !@disable_user_menu %>
