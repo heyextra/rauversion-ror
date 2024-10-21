@@ -66,14 +66,14 @@
         .order("id desc").limit(1).each do |post|
     %>
     
-      <div class="bg-pink-600 flex-grow text-white p-4 rounded-lg relative h-screen md:h-auto">
-        <%= image_tag(post.cover_url(:large), class: "bg-pink-600 absolute inset-0 w-full h-full object-cover opacity-50 hover:opacity-100 rounded-lg transition ease-in-out delay-150") %>
+      <div class="bg-pink-600 flex-grow text-white p-4 rounded-lg relative h-screen md:h-auto ">
+        <%= image_tag(post.cover_url(:large), class: "absolute bg-pink-600 inset-0 w-full h-full object-cover opacity-50 hover:opacity-100 rounded-lg transition ease-in-out duration-500 delay-150 ") %>
         <div class="relative- z-10 flex flex-col md:flex-row items-center md:items-start absolute bottom-0">
           <%= link_to article_path(post) do %>
             <div class="w-full md:w-2/3 p-4">
               <h1 class="text-4xl font-bold mb-4 bg-default p-1 text-default"><%= post.title %></h1>
               <p class="text-lg mb-4">
-                <%= t("articles.by") %> <%= link_to post.user.username, user_path(post.user.username), class: "link" %> · <%= l post.created_at, format: :long_with_day %>.
+                <%= t("articles.by") %> <%= link_to post.user.username, user_path(post.user.username), class: "link" %> <br> <%= l post.created_at, format: :long_with_day %>.
               </p>
               <!--<a href="#" class="bg-white text-purple-600 font-semibold py-2 px-4 rounded-lg">
                 Read more
@@ -93,17 +93,17 @@
         .with_attached_cover
         .includes(user: { avatar_attachment: :blob })
         .order("id desc").limit(3).offset(1).each do |post| %>
-        <div class="bg-white shadow-md rounded-lg overflow-hidden relative">
+        <div class="bg-yellow-600 shadow-md rounded-lg overflow-hidden relative ">
 
           <%= image_tag(post.cover_url(:large),
-            class: "w-full h-48 object-cover grayscale filter"
+            class: "w-full h-48 object-cover opacity-50 hover:opacity-100 grayscale filter transition ease-in-out duration-500 delay-150"
           ) %>
     
           <div class="p-4 absolute bottom-0">
             <h2 class="text-xl font-bold mb-2 bg-default p-1">
              <%= link_to post.title, article_path(post) %>
             </h2>
-            <p class="text-muted font-bold">
+            <p class="text-default font-bold">
               <%= t("articles.by") %> <%= link_to post.user.username, user_path(post.user.username), class: "link" %> · <%= l post.created_at, format: :long_with_day %>.
             </p>
           </div>
