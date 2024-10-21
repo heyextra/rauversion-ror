@@ -5,6 +5,7 @@ class UserSettingsController < ApplicationController
   def show
     @section = params[:section] || "profile"
     @user = User.find_by(username: params[:user_id])
+    @user.build_podcaster_info if @user.podcaster_info.nil?
     render "index"
   end
 
