@@ -55,8 +55,8 @@
 
 
 
-<div class="bg-gray-100 min-h-screen-">
-  <div class="container- mx-auto- px-4- py-8- flex md:flex-row flex-col">
+<div class="min-h-screen-">
+  <div class="container mx-auto px-4 py-8 flex gap-2 md:flex-row flex-col">
     <!-- Main Feature Section -->
     
     <% 
@@ -66,8 +66,8 @@
         .order("id desc").limit(1).each do |post|
     %>
     
-      <div class="flex-grow bg-pink-600 text-white p-4- rounded-lg- mb-4- relative h-screen md:h-auto">
-        <%= image_tag(post.cover_url(:large), class: "absolute inset-0 w-full h-full object-cover opacity-50 hover:opacity-100 rounded-lg transition ease-in-out delay-150") %>
+      <div class="bg-pink-600 flex-grow text-white p-4 rounded-lg relative h-screen md:h-auto">
+        <%= image_tag(post.cover_url(:large), class: "bg-pink-600 absolute inset-0 w-full h-full object-cover opacity-50 hover:opacity-100 rounded-lg transition ease-in-out delay-150") %>
         <div class="relative- z-10 flex flex-col md:flex-row items-center md:items-start absolute bottom-0">
           <%= link_to article_path(post) do %>
             <div class="w-full md:w-2/3 p-4">
@@ -86,14 +86,14 @@
     <% end %>
 
     <!-- Smaller Feature Sections -->
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-1 gap-0 md:w-2/5 w-full">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-1 gap-2 md:w-2/5 w-full">
 
       <!-- Feature 1 -->
       <% Post.published
         .with_attached_cover
         .includes(user: { avatar_attachment: :blob })
         .order("id desc").limit(3).offset(1).each do |post| %>
-        <div class="bg-white shadow-md rounded-lg- overflow-hidden relative">
+        <div class="bg-white shadow-md rounded-lg overflow-hidden relative">
 
           <%= image_tag(post.cover_url(:large),
             class: "w-full h-48 object-cover grayscale filter"
