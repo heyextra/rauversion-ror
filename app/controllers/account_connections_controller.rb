@@ -3,10 +3,12 @@ class AccountConnectionsController < ApplicationController
 
   def user_search
     @title = "Tracks"
-
     q = params[:q]
     if q.present?
+      puts "query fired"
       @artists = current_user.find_artists_excluding_children(q)
+    else
+      @artists = current_user.find_artists_excluding_children
     end
     #.with_attached_avatar
     #.order("id desc")
@@ -20,7 +22,7 @@ class AccountConnectionsController < ApplicationController
       hide: false,
       is_new: params[:kind] == "new"
       )
-    @users = User.where(role: "artists").page(params[:page]).per(10)
+    @artists = User.where(role: "artists").page(params[:page]).per(10)
   end
 
   def create
